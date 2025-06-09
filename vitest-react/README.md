@@ -1,12 +1,50 @@
-# React + Vite
+## Test with Vitest
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. Vitest
+2. React Testing Library
 
-Currently, two official plugins are available:
+## Installera Vitest och RTL
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+npm install --save-dev vitest @testing-library/react jsdom
+```
 
-## Expanding the ESLint configuration
+vitest: test-ramverket.
+@testing-library/react: för att rendera React-komponenter i tester.
+jsdom: emulerar DOM så att vi kan testa React-komponenter.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Lägg till detta i vite.config.js:
+
+```
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+test: {
+environment: 'jsdom',
+globals: true,
+},
+```
+
+## Lägg till i package.json
+
+```
+"scripts": {
+"test": "vitest"
+}
+```
+
+### Skapa en komponent
+
+T ex Greeting.jsx
+
+### Skapa en testfil
+
+Förslag på en skalbar mappstruktur för ett React-projekt med Jest och React Testing Library. Testfiler placeras bredvid de komponenter de testar, vilket förenklar underhåll och förståelse.
+
+![image](https://github.com/user-attachments/assets/4a246498-e708-4cf8-a7eb-f320019baf82)
+
+### Kör testet
+
+```
+npm run test
+```
